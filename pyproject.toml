@@ -1,0 +1,29 @@
+[project]
+name = "tasuren-global-chat-sample"
+version = "0.1.0"
+description = "tasurenのhikariを使ったグローバルチャットのサンプル"
+authors = [
+    {name = "Takagi Tasuku", email = "tasuren@outlook.jp"},
+]
+dependencies = [
+    "hikari[speedups]>=2.0.0.dev120",
+    "hikari-tanjun>=2.17.0",
+    "alluka>=0.1.3",
+    "pydantic-settings>=2.0.3",
+    "pydantic>=2.3.0",
+]
+optional-dependencies = { fast = ["uvloop"] }
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+license = {file = "LICENSE"}
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pyright>=1.1.325",
+    "black>=23.7.0",
+]
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__", "**/.venv"]
+typingCheckingMode = "strict"
