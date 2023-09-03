@@ -8,7 +8,7 @@ __all__ = (
     "load_callbacks",
 )
 
-from typing import Self
+from typing import Self, Final
 from collections.abc import Callable
 
 from logging import getLogger
@@ -21,12 +21,10 @@ from tomllib import loads
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from .state import State
 
-
-ENV_PREFIX = "TGCS"
-CONFIG_PATH = getenv(f"{ENV_PREFIX}_PATH_OF_CONFIG") or "config.toml"
-logger = getLogger(__name__)
+ENV_PREFIX: Final = "TGCS"
+CONFIG_PATH: Final = getenv(f"{ENV_PREFIX}_PATH_OF_CONFIG") or "config.toml"
+logger: Final = getLogger(__name__)
 
 
 class PolicyConfig(BaseSettings):

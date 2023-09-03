@@ -1,3 +1,5 @@
+from typing import Final
+
 from logging import getLogger
 
 from asyncio import gather
@@ -14,7 +16,7 @@ from more_itertools import chunked
 from core import Config, State
 
 
-logger = getLogger(__name__)
+logger: Final = getLogger(__name__)
 component = tanjun.Component(name=__name__)
 
 
