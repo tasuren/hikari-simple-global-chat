@@ -1,0 +1,14 @@
+# BotのTOKEN
+token = "..."
+# グローバルチャットに接続するチャンネルID
+channel_ids = []
+# ミュートといった一時的な操作をすることができるユーザーのID
+admin_ids = []
+
+[policy]
+# グローバルチャットからBANされたユーザー
+banned_user_ids = []
+# （自分を除く）Botによる送信を許可するかどうか
+allow_bot = false
+# 起動後、デフォルトでグローバルチャットをロックダウンするかどうか
+first_lockdown = false
