@@ -26,7 +26,6 @@ def make_name(name: str, id_: int) -> str:
 
 async def obtain_guild(app: RESTAware, cache: Cache, id_: int) -> Guild:
     if (guild := cache.get_guild(id_)) is None:
-        print(1)
         guild = await app.rest.fetch_guild(id_)
     return guild
 
