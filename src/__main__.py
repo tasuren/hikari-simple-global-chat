@@ -11,7 +11,8 @@ import tanjun
 from core import State, Config, load
 
 
-config = load()
+logger: Final = getLogger("app")
+config: Final = load()
 
 
 intents = Intents.ALL_MESSAGES | Intents.MESSAGE_CONTENT
@@ -28,10 +29,9 @@ bot: Final = GatewayBot(
     ),
     intents=intents,
 )
-logger: Final = getLogger("app")
 
 
-client = (
+client: Final = (
     tanjun.Client.from_gateway_bot(bot, declare_global_commands=True)
     .load_modules("components.general")
     .load_modules("components.admin")
