@@ -6,6 +6,7 @@ authors = [
     {name = "Takagi Tasuku", email = "tasuren@outlook.jp"},
 ]
 readme = "README.md"
+license = {file = "LICENSE"}
 classifiers = [
     "Private :: Do Not Upload",
     "Topic :: Communications :: Chat",
@@ -13,7 +14,6 @@ classifiers = [
     "Framework :: AsyncIO",
     "Framework :: aiohttp"
 ]
-license = {file = "LICENSE"}
 dependencies = [
     "hikari[speedups]>=2.0.0.dev120",
     "hikari-tanjun>=2.17.0",
@@ -27,6 +27,8 @@ requires-python = ">=3.11,<3.12"
 
 [project.urls]
 Source = "https://github.com/tasuren/hikari-simple-global-chat"
+Donate = "https://www.buymeacoffee.com/tasuren"
+Chat = "https://discord.gg/kfMwZUyGFG"
 
 [tool.pdm.dev-dependencies]
 dev = [
