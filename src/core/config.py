@@ -26,7 +26,7 @@ from .state import State
 
 ENV_PREFIX = "TGCS"
 CONFIG_PATH = getenv(f"{ENV_PREFIX}_PATH_OF_CONFIG") or "config.toml"
-LOGGER = getLogger(__name__)
+logger = getLogger(__name__)
 
 
 class PolicyConfig(BaseSettings):
@@ -51,7 +51,7 @@ class Config(BaseSettings):
 
     def model_post_init(self, _) -> None:
         if not self.admin_ids:
-            LOGGER.warning("管理者が指定されていません。この場合、ミュートといったコマンドは誰も使えません。")
+            logger.warning("管理者が指定されていません。この場合、ミュートといったコマンドは誰も使えません。")
 
     def update(self, new: Self) -> Self:
         self.model_fields.update(new.model_fields)
@@ -72,12 +72,14 @@ def load() -> Config:
     else:
         tmp = Config(token="...", channel_ids=[])
 
+    logger.info("設定を読み込みました。")
+
     if config is None:
         config = tmp
     else:
         config.update(tmp)
 
-    LOGGER.debug("読み込んだ設定：%s", config)
+    logger.debug("読み込んだ設定：%s", config)
 
     return config
 
