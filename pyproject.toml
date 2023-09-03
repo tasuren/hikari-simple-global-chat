@@ -1,6 +1,5 @@
 [project]
 name = "tasuren-global-chat-sample"
-version = "0.1.0"
 description = "hikariを使ったシンプルなDiscord用グローバルチャットBotプログラム"
 authors = [
     {name = "Takagi Tasuku", email = "tasuren@outlook.jp"},
@@ -24,6 +23,10 @@ dependencies = [
 ]
 optional-dependencies = { fast = ["uvloop"] }
 requires-python = ">=3.11,<3.12"
+dynamic = ["version"]
+
+[tool.pdm]
+version = {source = "file", path = "src/__init__.py"}
 
 [project.urls]
 Source = "https://github.com/tasuren/hikari-simple-global-chat"
