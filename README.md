@@ -12,12 +12,11 @@ tasurenがhikariを試してみたかったから作ったものです。
   - ロックダウン
 
 ## 要件
-- パッケージマネージャとしてPDM
 - Python 3.11
 
 ## 起動方法
 1. `config.template.toml`の通りに設定ファイル`config.toml`を作成（またはpydantic-settingsの仕様通りに環境変数を設定）
-2. テスト時は`pdm run python3 .`、本番時は`python3 . -OO`で起動
+2. 開発時は`pdm run python3 .`、本番時は`python3 . -OO`で起動（が好ましい）
 
 ## ライセンス
 ここにあるものは[このファイル]()に記載されているライセンスの下で提供されています。
