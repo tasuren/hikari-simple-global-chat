@@ -6,8 +6,6 @@ import tanjun
 from tanjun.abc import SlashContext, Context
 from alluka import Injected
 
-from json import dumps
-
 from core import State
 from core.config import Config, load
 
@@ -15,7 +13,10 @@ from utils import bool_to_str, join_code
 
 
 def check(ctx: Context, config: Injected[Config]) -> bool:
-    return ctx.author.id in config.admin_ids
+    if ctx.author.id in config.admin_ids:
+        return True
+
+    raise tanjun.CommandError("あなたはこのコマンドを実行できません。")
 
 
 component = tanjun.Component(name=__name__)
@@ -39,13 +40,13 @@ async def state_command(ctx: SlashContext, state: Injected[State]) -> None:
     )
 
 
-@moderation_group.as_sub_command("lock", "グローバルチャットをロックします。")
+@moderation_group.as_sub_command("lock", "グローバルチャットを一時的にロックします。")
 async def lock_command(ctx: SlashContext, state: Injected[State]) -> None:
     state.lockdown = True
     await ctx.respond("できた。")
 
 
-@moderation_group.as_sub_command("unlock", "グローバルチャットをロックします。")
+@moderation_group.as_sub_command("unlock", "グローバルチャットをアンロックします。")
 async def unlock_command(ctx: SlashContext, state: Injected[State]) -> None:
     state.lockdown = False
     await ctx.respond("できた。")
@@ -83,7 +84,7 @@ async def mute_or_unmute(
 
 @tanjun.with_str_slash_option("target_id", "ミュートにする対象のIDです。", converters=int)
 @tanjun.with_str_slash_option("mode", "対象の種類です。", choices=MUTE_MODES)
-@moderation_group.as_sub_command("mute", "チャンネルまたはユーザーをミュートします。")
+@moderation_group.as_sub_command("mute", "チャンネルまたはユーザーを一時的にミュートします。")
 async def mute_command(
     ctx: SlashContext,
     state: Injected[State],

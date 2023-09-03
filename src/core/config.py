@@ -1,6 +1,15 @@
-__all__ = ("ENV_PREFIX", "CONFIG_PATH", "GlobalChatConfig", "Config", "config", "load")
+__all__ = (
+    "ENV_PREFIX",
+    "CONFIG_PATH",
+    "PolicyConfig",
+    "Config",
+    "config",
+    "load",
+    "load_callbacks",
+)
 
 from typing import Self
+from collections.abc import Callable
 
 from logging import getLogger
 
@@ -20,12 +29,12 @@ CONFIG_PATH = getenv(f"{ENV_PREFIX}_PATH_OF_CONFIG") or "config.toml"
 LOGGER = getLogger(__name__)
 
 
-class GlobalChatConfig(BaseSettings):
-    "グローバルチャットについての設定"
+class PolicyConfig(BaseSettings):
+    "動作ポリシーの設定"
 
     banned_user_ids: list[int] = Field(default_factory=list)
     allow_bot: bool = False
-    default_state: State = Field(default_factory=State)
+    first_lockdown: bool = False
 
 
 class Config(BaseSettings):
@@ -36,8 +45,9 @@ class Config(BaseSettings):
     )
 
     token: str
+    channel_ids: list[int]
     admin_ids: list[int] = Field(default_factory=list)
-    global_chat: GlobalChatConfig = Field(default_factory=GlobalChatConfig)
+    policy: PolicyConfig = Field(default_factory=PolicyConfig)
 
     def model_post_init(self, _) -> None:
         if not self.admin_ids:
@@ -60,7 +70,7 @@ def load() -> Config:
         with open(CONFIG_PATH, "r") as f:
             tmp = Config.model_validate(loads(f.read()))
     else:
-        tmp = Config(token="...", admin_ids=[])
+        tmp = Config(token="...", channel_ids=[])
 
     if config is None:
         config = tmp
@@ -70,3 +80,6 @@ def load() -> Config:
     LOGGER.debug("読み込んだ設定：%s", config)
 
     return config
+
+
+load_callbacks = set[Callable[[Config], None]]()
