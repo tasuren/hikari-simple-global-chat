@@ -1,7 +1,7 @@
 [project]
 name = "tasuren-global-chat-sample"
 version = "0.1.0"
-description = "tasurenのhikariを使ったグローバルチャットのサンプル"
+description = "hikariを使ったシンプルなDiscord用グローバルチャットBotプログラム"
 authors = [
     {name = "Takagi Tasuku", email = "tasuren@outlook.jp"},
 ]
