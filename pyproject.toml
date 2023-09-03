@@ -5,6 +5,15 @@ description = "tasurenのhikariを使ったグローバルチャットのサン�
 authors = [
     {name = "Takagi Tasuku", email = "tasuren@outlook.jp"},
 ]
+readme = "README.md"
+classifiers = [
+    "Private :: Do Not Upload",
+    "Topic :: Communications :: Chat",
+    "Typing :: Typed",
+    "Framework :: AsyncIO",
+    "Framework :: aiohttp"
+]
+license = {file = "LICENSE"}
 dependencies = [
     "hikari[speedups]>=2.0.0.dev120",
     "hikari-tanjun>=2.17.0",
@@ -15,8 +24,6 @@ dependencies = [
 ]
 optional-dependencies = { fast = ["uvloop"] }
 requires-python = ">=3.11,<3.12"
-readme = "README.md"
-license = {file = "LICENSE"}
 
 [tool.pdm.dev-dependencies]
 dev = [
