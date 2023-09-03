@@ -25,6 +25,9 @@ dependencies = [
 optional-dependencies = { fast = ["uvloop"] }
 requires-python = ">=3.11,<3.12"
 
+[project.urls]
+Source = "https://github.com/tasuren/hikari-simple-global-chat"
+
 [tool.pdm.dev-dependencies]
 dev = [
     "pyright>=1.1.325",

@@ -10,7 +10,7 @@ component = Component(name=__name__)
 async def info_command(ctx: SlashContext) -> None:
     await ctx.respond(
         "tasurenのグローバルチャットのサンプルプログラムです。\n"
-        "リポジトリ：https://github.com/tasuren/globalchat-sample"
+        "リポジトリ：https://github.com/tasuren/hikari-simple-global-chat"
     )
 
 
