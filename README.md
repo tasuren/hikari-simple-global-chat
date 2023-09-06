@@ -1,5 +1,5 @@
 # Simple Global Chat with Hikari
-DiscordのAPIラッパhikariを使った、ちょっとしたグローバルチャットのプログラムのリポジトリです。  
+DiscordのAPIラッパhikariを使ったシンプルなグローバルチャットBotのプログラムのです。  
 tasurenがhikariを試してみたかったから作ったものです。
 
 ## 仕様
